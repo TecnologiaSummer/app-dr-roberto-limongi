@@ -1,27 +1,27 @@
-import { useEffect, useState } from "react";
-import { Link } from '@react-navigation/native';
-import { Button } from "../../components/Button";
-import { api } from "../../services/api";
-import * as C from "./styles"
 import {
    KeyboardAvoidingView,
 } from 'react-native';
-// import * as SplashScreen from 'expo-splash-screen';
-
-// SplashScreen.preventAutoHideAsync();
+import { Link } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+import { api } from "../../services/api";
+import { Button } from "../../components/Button";
+import * as C from "./styles"
 
 export const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [token, setToken] = useState()
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useState();
+  const navigation = useNavigation();
 
   const fetchToken = async () => {
     try {
-      const response = await api.post('/auth', {
+      const response = await api.post('/autenticador', {
         cd_email: email,
         password: password
       })
       setToken(response.data)
+      navigation.navigate("Home")
     } catch(e) {
       console.warn('Error: ' + e)
     }
