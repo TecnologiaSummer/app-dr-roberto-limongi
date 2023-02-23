@@ -9,11 +9,11 @@ module.exports = {
   database: process.env.DATABASE,
   define: {
     freezeTableName: true,
-    timestamps: true,
+    timestamps: false,
     underscored: true,
     underscoredAll: true,
-    createdAt: 'dt_criacao',
-    updatedAt: 'dt_atualizacao',
+    createdAt: 'dt_criado_em',
+    updatedAt: 'dt_atualizado_em',
   },
   dialectOptions: {
     timezone: '-03:00',

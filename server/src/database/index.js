@@ -1,8 +1,11 @@
 import { Sequelize } from 'sequelize';
 import databaseConfig from '../config/database';
-import Admin from '../models/Admin';
+import Usuario from '../models/Usuario';
+import Grupo from '../models/Grupo';
+import Permissao from '../models/Permissao';
+import GrupoPermissao from '../models/GrupoPermissao';
 
-const models = [Admin];
+const models = [Usuario, Grupo, Permissao, GrupoPermissao];
 
 const connection = new Sequelize(databaseConfig);
 

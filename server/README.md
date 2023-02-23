@@ -22,10 +22,12 @@ MIGRATIONS
 npx sequelize migration:create --name=tb_name
 npx sequelize db:migrate
 npx sequelize db:migrate:undo // desfaz o comando acima
+npx sequelize db:migrate:undo --name 20180704124934-create-branch.js
 
 SEEDS
 npx sequelize seed:generate --name criar-usuarios
-npx sequelize db:seed:all
+npx sequelize db:seed --seed my_seeder_file.js
+npx Sequelize de:seed:all
 
 LIST
 1º Criar a migração,

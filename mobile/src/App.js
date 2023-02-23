@@ -1,22 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ForgetPassword } from './views/ForgetPassword';
-import { Login } from './views/Login';
-import { ResetPassword } from './views/ResetPassword';
+import { Routes } from './routes';
+import { AuthProvider } from './contexts/auth';
 
 export default function App() {
-  const Stack = createNativeStackNavigator();
 
   return ( 
     <NavigationContainer>
-      <Stack.Navigator 
-        initialRouteName='Login' 
-        screenOptions={{ headerShown: false}}
-        >
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
-        <Stack.Screen name="ResetPassword" component={ResetPassword} />
-      </Stack.Navigator>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </NavigationContainer>
   );
 }
