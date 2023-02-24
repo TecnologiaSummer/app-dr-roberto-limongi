@@ -21,7 +21,7 @@ export const Login = () => {
         password: password
       })
       setToken(response.data)
-      navigation.navigate("Home")
+      navigation.navigate("Dashboard")
     } catch(e) {
       console.warn('Error: ' + e)
     }
