@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ForgetPassword } from './views/ForgetPassword';
-import { Home } from './views/Home';
+import { Dashboard } from './views/Dashboard';
 import { Login } from './views/Login';
 import { ResetPassword } from './views/ResetPassword';
 
@@ -15,7 +15,7 @@ export const Routes = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
       </Stack.Navigator>
     )
 }
