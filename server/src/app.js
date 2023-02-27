@@ -45,8 +45,8 @@ class App {
   }
 
   routes() {
-    this.app.use('/usuario/', usuarioRoutes);
-    this.app.use('/autenticador/', tokenRoutes);
+    this.app.use('/user/', usuarioRoutes);
+    this.app.use('/auth/', tokenRoutes);
     this.app.use('/esqueceu/', resetPasswordRoutes);
     this.app.use('/grupo/', grupoRoutes);
     this.app.use('/grupo/', grupoPermissaoRoute);

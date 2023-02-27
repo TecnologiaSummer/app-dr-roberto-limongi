@@ -15,7 +15,7 @@ class UsuarioController {
 
   async index(req, res) {
     try {
-      const usuarios = await Usuario.findAll({ attributes: ['cd_usuario', 'nm_usuario', 'cd_email'] });
+      const usuarios = await Usuario.findAll();
       return res.status(200).json(usuarios);
     } catch (e) {
       return res.status(400).json({

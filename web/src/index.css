@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.meu-grid{
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+  grid-template-rows: 0fr 1fr;
+  grid-template-areas:
+  'aside main'
+  'aside main';
+  height: 100vh;
+}
+
+ .main {
+  grid-area: main;
+}
+
+.aside {
+  grid-area: aside;
+} 
+
+#root{
+  background-color: #F1F5FF;
+}
+
+
+/* .header {
+  grid-area: header;
+  background-color: white;
+} */
+
+
+
