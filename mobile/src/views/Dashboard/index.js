@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
 import { SafeAreaView, Text} from "react-native";
-import { AuthContext } from "../../contexts/auth";
+import { useAuth } from "../../contexts/auth";
 
 export const Dashboard = () => {
-  const { nome } = useContext(AuthContext);
+  const { userToken } = useAuth()
 
   return ( 
    <SafeAreaView>
     <Text>Página Pedidos</Text>
-    <Text>Nome: {nome}</Text>
+    <Text>userToken: {userToken}</Text>
    </SafeAreaView>
   );
 }
