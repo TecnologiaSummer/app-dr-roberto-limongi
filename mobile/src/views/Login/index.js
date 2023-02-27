@@ -4,32 +4,20 @@ import {
 import { Link } from '@react-navigation/native';
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { api } from "../../services/api";
 import { Button } from "../../components/Button";
+import { useAuth } from '../../contexts/auth';
 import * as C from "./styles"
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState();
+  const { fetchToken } = useAuth()
   const navigation = useNavigation();
 
-  const fetchToken = async () => {
-    try {
-      const response = await api.post('/autenticador', {
-        cd_email: email,
-        password: password
-      })
-      setToken(response.data)
-      navigation.navigate("Dashboard")
-    } catch(e) {
-      console.warn('Error: ' + e)
-    }
-  }
-
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if(email && password) {
-      fetchToken()
+      await fetchToken(email, password)
+      navigation.navigate("Dashboard")
     } else {
       console.warn('Dados não preenchidos')
     }
