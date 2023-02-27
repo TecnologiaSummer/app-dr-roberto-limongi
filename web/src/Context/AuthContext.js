@@ -1,13 +1,13 @@
 import { createContext, useState,useEffect } from "react";
 import { api } from "../Services/api";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
 
   const [user, setUser] = useState(null);
-  useEffect(() => {
 
+  useEffect(() => {
     const loadingStoreData = async () => {
       const storageToken = localStorage.getItem("@Auth:token");
   
@@ -15,17 +15,15 @@ export const AuthProvider = ({children}) => {
         setUser(storageToken);
       }
     };
+
     loadingStoreData();
-  },[])
-
-
+  }, [])
 
   const signIn = async (email, password) => {
     const response = await api.post("/auth", {
       cd_email: email.value,
       password: password.value,
     });
-
 
     if(response.data.error){
       alert(response.data.error);

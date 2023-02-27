@@ -11,11 +11,9 @@ export default function Router() {
     <BrowserRouter>
          <AuthProvider>
           <Routes>
-            <Route path="/" element={<Login />} />
-            
+              <Route path="/" element={<Login />} />
               <Route path="/dashboard/" element={<PrivateRoute><Home /></PrivateRoute>} />
               <Route path="/usuarios/" element={<PrivateRoute><Usuarios /></PrivateRoute>} />
-            
           </Routes>
       </AuthProvider>
     </BrowserRouter>
