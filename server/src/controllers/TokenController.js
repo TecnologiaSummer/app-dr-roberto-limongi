@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Admin from '../models/Usuario';
+import Usuario from '../models/Usuario';
 
 class TokenController {
   async store(req, res) {
@@ -11,27 +11,27 @@ class TokenController {
       });
     }
 
-    const admin = await Admin.findOne({ where: { cd_email } });
+    const usuario = await Usuario.findOne({ where: { cd_email } });
 
-    if (!admin) {
+    if (!usuario) {
       return res.status(401).json({
         errors: ['Usuário não existe'],
       });
     }
 
-    if (!(await admin.passwordIsValid(password))) {
+    if (!(await usuario.passwordIsValid(password))) {
       return res.status(401).json({
         errors: ['Senha Invalida'],
       });
     }
 
-    const { cd_administrador } = admin;
+    const { cd_usuario } = usuario;
 
-    const token = jwt.sign({ cd_administrador, cd_email }, process.env.TOKEN_SECRET, {
+    const token = jwt.sign({ cd_usuario, cd_email }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
-    return res.json({ token });
+    return res.json({ token, usuario: { cd_usuario, nome: usuario.nm_usuario, cd_email } });
   }
 }
 
