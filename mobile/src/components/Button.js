@@ -1,4 +1,4 @@
-import { Text, SafeAreaView } from "react-native";
+import { Text, SafeAreaView } from "react-native"
 import styled from 'styled-components/native'
 
 const ButtonStyles = styled.TouchableOpacity`
@@ -11,7 +11,6 @@ const ButtonStyles = styled.TouchableOpacity`
 `
 
 export const Button = ( { children, onSubmit}) => {
-
   return ( 
     <ButtonStyles onPress={onSubmit}>
         { children }
