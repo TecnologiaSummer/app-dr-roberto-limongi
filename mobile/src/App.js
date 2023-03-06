@@ -4,12 +4,14 @@ import { AuthProvider } from './contexts/auth';
 
 export default function App() {
 
-  return ( 
-    <NavigationContainer>
-      <AuthProvider>
-        <Routes />
-      </AuthProvider>
-    </NavigationContainer>
+  return (
+    <> 
+      <NavigationContainer>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
+    </>
   );
 }
 

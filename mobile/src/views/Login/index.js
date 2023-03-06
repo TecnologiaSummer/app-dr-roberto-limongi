@@ -1,23 +1,23 @@
 import {
    KeyboardAvoidingView,
-} from 'react-native';
-import { Link } from '@react-navigation/native';
-import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
-import { Button } from "../../components/Button";
-import { useAuth } from '../../contexts/auth';
+} from 'react-native'
+import { Link } from '@react-navigation/native'
+import { useNavigation } from "@react-navigation/native"
+import { useEffect, useState } from "react"
+import { Button } from "../../components/Button"
+import { useAuth } from '../../contexts/auth'
 import * as C from "./styles"
 
 export const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { fetchToken } = useAuth()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const { fetchToken, userToken } = useAuth()
   const navigation = useNavigation();
 
   const handleLogin = async () => {
     if(email && password) {
-      await fetchToken(email, password)
-      navigation.navigate("Dashboard")
+      const validateUser = await fetchToken(email, password)
+      validateUser ? navigation.navigate("Dashboard") : console.warn('Usuário incorreto')
     } else {
       console.warn('Dados não preenchidos')
     }
@@ -47,6 +47,6 @@ export const Login = () => {
           </C.ButtonContainer>
         </KeyboardAvoidingView>
       </C.Container>
-  );
+  )
 }
 
